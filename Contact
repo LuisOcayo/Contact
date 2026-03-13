@@ -1,4 +1,256 @@
-Luis Ocayo Mansur
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luis Ocayo Mansur — Contacto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-Fono: +569-61505859
-E-mail: luis.ocayo@hotmail.com
+    :root {
+      --bg:       #0d0d0d;
+      --surface:  #161616;
+      --border:   #2a2a2a;
+      --gold:     #D4A800;
+      --gold-dim: #a07f00;
+      --white:    #f0ede8;
+      --muted:    #888;
+      --blue:     #29B6F6;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    /* Animated background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212,168,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,168,0,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glow orb top-left */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -120px;
+      left: -120px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(41,182,246,0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 56px 52px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset;
+      animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Gold top accent bar */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 40px; right: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border-radius: 0 0 4px 4px;
+    }
+
+    /* Avatar initials */
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #0d0d0d;
+      margin-bottom: 28px;
+      box-shadow: 0 0 0 4px rgba(212,168,0,0.15), 0 8px 24px rgba(212,168,0,0.2);
+      animation: fadeUp 0.7s 0.1s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      animation: fadeUp 0.7s 0.15s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      margin: 20px 0 28px;
+      animation: fadeUp 0.7s 0.2s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-item {
+      animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .contact-item:nth-child(1) { animation-delay: 0.25s; }
+    .contact-item:nth-child(2) { animation-delay: 0.32s; }
+
+    .contact-item a {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--white);
+      font-size: 0.95rem;
+      font-weight: 400;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+
+    .contact-item a:hover {
+      background: rgba(212,168,0,0.07);
+      border-color: rgba(212,168,0,0.35);
+      transform: translateX(4px);
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .icon-phone { background: rgba(41,182,246,0.12); }
+    .icon-email { background: rgba(212,168,0,0.12); }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-value {
+      font-size: 0.97rem;
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .footer-note {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+      animation: fadeUp 0.7s 0.4s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 40px 28px; }
+      .name { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="avatar">LO</div>
+
+  <h1 class="name">Luis Ocayo<br>Mansur</h1>
+
+  <div class="divider"></div>
+
+  <ul class="contact-list">
+
+    <li class="contact-item">
+      <a href="tel:+56961505859">
+        <div class="icon icon-phone">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#29B6F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6.29 6.29l1.62-1.62a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">Teléfono</span>
+          <span class="contact-value">+569 6150 5859</span>
+        </div>
+      </a>
+    </li>
+
+    <li class="contact-item">
+      <a href="mailto:luis.ocayo@hotmail.com">
+        <div class="icon icon-email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+        </div>
+        <div class="contact-info">
+          <span class="contact-label">Correo electrónico</span>
+          <span class="contact-value">luis.ocayo@hotmail.com</span>
+        </div>
+      </a>
+    </li>
+
+  </ul>
+
+  <p class="footer-note">© 2026 Luis Ocayo Mansur</p>
+</div>
+
+</body>
+</html>
